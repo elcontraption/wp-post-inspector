@@ -29,14 +29,14 @@ $helloWorldPost = new \WpPostInspector\PostInspector('hello-world');
 Returns array of ancestors as PostInspector objects.
 
 ```php
-$currentPost->parent();
+$currentPost->ancestors();
 ```
 
 ### descendants
 Returns array of descendants as PostInspector objects.
 
 ```php
-$currentPost->parent();
+$currentPost->descendants();
 ```
 
 ### parent
@@ -57,14 +57,14 @@ $currentPost->permalink();
 Returns array of siblings as PostInspector objects.
 
 ```php
-$currentPost->permalink();
+$currentPost->siblings();
 ```
 
 ### top
 Access the top ancestor as a PostInspector object.
 
 ```php
-$currentPost->permalink();
+$currentPost->top();
 ```
 
 

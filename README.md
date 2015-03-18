@@ -2,6 +2,8 @@
 
 Tools for interacting and inspecting WordPress post objects.
 
+**I'm currently testing this, use at your own risk.**
+
 
 - [Retrieving a post object](#retrieving-a-post-object)
 - [Accessing post attributes](#accessing-post-attributes)

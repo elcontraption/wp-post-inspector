@@ -12,16 +12,14 @@ Tools for interacting and inspecting WordPress post objects.
 ## Retrieving a post object
 
 ```php
-$postInspector = new \WpPostInspector\PostInspector();
-
 // Get the current post object:
-$currentPost = $postInspector->get();
+$currentPost = new \WpPostInspector\PostInspector();
 
-// Get a specific post object by ID:
-$post1 = $postInspector->get(1);
+// Get a specific post object by ID
+$post1 = new \WpPostInspector\PostInspector(1);
 
 // Get a specific post object by slug:
-$helloWorldPost = $postInspector->get('hello-world');
+$helloWorldPost = new \WpPostInspector\PostInspector('hello-world');
 ```
 
 * * *
@@ -30,20 +28,11 @@ $helloWorldPost = $postInspector->get('hello-world');
 You may either use standard WP_Post attributes (as methods) or any of the shortcut methods built in to this class.
 
 ```php
-// Display the current post title:
-echo $postInspector->title(); // "Hello world!"
-
-// Display the title for a specific post:
-$post1 = $postInspector->get(1);
-
-// Using a shortcut method:
-echo $post1->title(); // "Hello world!"
+// Display the current post title using a shortcut method:
+echo $currentPost->title(); // "Hello world!"
 
 // Using a standard WP_Post attribute name:
-echo $post1->post_title(); // "Hello world!"
-
-// Method chaining:
-echo $postInspector->get(1)->title(); // "Hello world!"
+echo $currentPost->post_title(); // "Hello world!"
 ```
 
 Attribute name          | Shortcut method
@@ -79,16 +68,16 @@ You may traverse the post hierarchy using the `parent`, `top`, `ancestors`, `des
 
 ```php
 // Get the parent of the current post object:
-$parent = $postInspector->get()->parent();
+$parent = $currentPost->parent();
 
 // Accessing attributes on the parent object:
 echo $parent->slug();
 
 // Display the title of the top ancestor post object
-echo $postInspector->top()->title();
+echo $currentPost->top()->title();
 
 // The 'ancestors', 'descendants', and 'siblings' methods all return arrays of PostInspector objects:
-$ancestors = $postInspector->get()->ancestors();
+$ancestors = $currentPost->ancestors();
 
 foreach ($ancestors as $ancestor)
 {
@@ -96,7 +85,7 @@ foreach ($ancestors as $ancestor)
 }
 
 // Method chaining is possible:
-$grandParent = $postInspector->get()->parent()->parent();
-$grandAunts = $postInspector->get()->parent()->parent()->siblings();
+$grandParent = $currentPost->parent()->parent();
+$grandAunts = $currentPost->parent()->parent()->siblings();
 
 ```

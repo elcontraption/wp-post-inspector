@@ -1,0 +1,22 @@
+{
+    "name": "elcontraption/wp-post-inspector",
+    "version": "0.1.0",
+    "description": "Tools for interacting and inspecting WordPress post objects.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Darin Reid",
+            "email": "darin@elcontraption.com",
+            "homepage": "http://elcontraption.com/",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "WpPostInspector\\": "lib/WpPostInspector"
+        }
+    }
+}

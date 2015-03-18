@@ -12,14 +12,16 @@ Tools for interacting and inspecting WordPress post objects.
 ## Retrieving a post object
 
 ```php
+$postInspector = new \WpPostInspector\PostInspector();
+
 // Get the current post object:
-$post = Post::get();
+$currentPost = $postInspector->get();
 
 // Get a specific post object by ID:
-$post = Post::get(1);
+$post1 = $postInspector->get(1);
 
 // Get a specific post object by slug:
-$post = Post::get('hello-world');
+$helloWorldPost = $postInspector->get('hello-world');
 ```
 
 * * *
@@ -29,19 +31,19 @@ You may either use standard WP_Post attributes (as methods) or any of the shortc
 
 ```php
 // Display the current post title:
-echo Post::title(); // "Hello world!"
+echo $postInspector->title(); // "Hello world!"
 
 // Display the title for a specific post:
-$post = Post::get(1);
+$post1 = $postInspector->get(1);
 
 // Using a shortcut method:
-echo $post->title(); // "Hello world!"
+echo $post1->title(); // "Hello world!"
 
 // Using a standard WP_Post attribute name:
-echo $post->post_title(); // "Hello world!"
+echo $post1->post_title(); // "Hello world!"
 
 // Method chaining:
-echo Post::get(1)->title(); // "Hello world!"
+echo $postInspector->get(1)->title(); // "Hello world!"
 ```
 
 Attribute name          | Shortcut method
@@ -77,16 +79,16 @@ You may traverse the post hierarchy using the `parent`, `top`, `ancestors`, `des
 
 ```php
 // Get the parent of the current post object:
-$parent = Post::get()->parent();
+$parent = $postInspector->get()->parent();
 
 // Accessing attributes on the parent object:
 echo $parent->slug();
 
 // Display the title of the top ancestor post object
-echo Post::top()->title();
+echo $postInspector->top()->title();
 
 // The 'ancestors', 'descendants', and 'siblings' methods all return arrays of PostInspector objects:
-$ancestors = Post::get()->ancestors();
+$ancestors = $postInspector->get()->ancestors();
 
 foreach ($ancestors as $ancestor)
 {
@@ -94,7 +96,7 @@ foreach ($ancestors as $ancestor)
 }
 
 // Method chaining is possible:
-$grandParent = Post::get()->parent()->parent();
-$grandAunts = Post::get()->parent()->parent()->siblings();
+$grandParent = $postInspector->get()->parent()->parent();
+$grandAunts = $postInspector->get()->parent()->parent()->siblings();
 
 ```

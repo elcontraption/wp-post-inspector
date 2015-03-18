@@ -2,13 +2,18 @@
 
 Tools for interacting and inspecting WordPress post objects.
 
-**I'm currently testing this, use at your own risk.**
-
-
+- [Installation](#installation)
 - [Retrieving a post object](#retrieving-a-post-object)
 - [Methods](#methods)
 - [Accessing post attributes](#accessing-post-attributes)
 - [Traversing the post hierarchy](#traversing-a-post-hierarchy)
+
+## Installation
+
+Via composer:
+```
+composer require elcontraption/wp-post-inspector
+```
 
 ## Retrieving a post object
 

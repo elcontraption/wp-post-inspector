@@ -6,6 +6,7 @@ Tools for interacting and inspecting WordPress post objects.
 
 
 - [Retrieving a post object](#retrieving-a-post-object)
+- [Methods](#methods)
 - [Accessing post attributes](#accessing-post-attributes)
 - [Traversing the post hierarchy](#traversing-a-post-hierarchy)
 
@@ -22,7 +23,50 @@ $post1 = new \WpPostInspector\PostInspector(1);
 $helloWorldPost = new \WpPostInspector\PostInspector('hello-world');
 ```
 
-* * *
+## Methods
+
+### ancestors
+Returns array of ancestors as PostInspector objects.
+
+```php
+$currentPost->parent();
+```
+
+### descendants
+Returns array of descendants as PostInspector objects.
+
+```php
+$currentPost->parent();
+```
+
+### parent
+Access parent PostInspector object.
+
+```php
+$currentPost->parent();
+```
+
+### permalink
+Shortcut for `get_permalink($currentPost->id())`.
+
+```php
+$currentPost->permalink();
+```
+
+### siblings
+Returns array of siblings as PostInspector objects.
+
+```php
+$currentPost->permalink();
+```
+
+### top
+Access the top ancestor as a PostInspector object.
+
+```php
+$currentPost->permalink();
+```
+
 
 ## Accessing post attributes
 You may either use standard WP_Post attributes (as methods) or any of the shortcut methods built in to this class.

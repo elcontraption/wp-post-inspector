@@ -23,6 +23,16 @@ class PostInspector {
     }
 
     /**
+     * Get post permalink
+     * 
+     * @return string Post permalink
+     */
+    public function permalink()
+    {
+        return get_permalink($this->post->id());
+    }
+
+    /**
      * Get the parent post object
      *
      * If no parent exists, will return the current post object

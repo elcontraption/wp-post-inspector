@@ -1,6 +1,5 @@
 {
     "name": "elcontraption/wp-post-inspector",
-    "version": "0.1.0",
     "description": "Tools for interacting and inspecting WordPress post objects.",
     "license": "MIT",
     "authors": [

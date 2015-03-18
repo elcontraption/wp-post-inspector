@@ -10,7 +10,8 @@ Tools for interacting and inspecting WordPress post objects.
 
 ## Installation
 
-Via composer:
+Install as a dependency of your theme via composer:
+
 ```
 composer require elcontraption/wp-post-inspector
 ```
@@ -18,14 +19,16 @@ composer require elcontraption/wp-post-inspector
 ## Retrieving a post object
 
 ```php
+use \WpPostInspector\PostInspector;
+
 // Get the current post object:
-$currentPost = new \WpPostInspector\PostInspector();
+$currentPost = new PostInspector();
 
 // Get a specific post object by ID
-$post1 = new \WpPostInspector\PostInspector(1);
+$post1 = new PostInspector(1);
 
 // Get a specific post object by slug:
-$helloWorldPost = new \WpPostInspector\PostInspector('hello-world');
+$helloWorldPost = new PostInspector('hello-world');
 ```
 
 ## Methods

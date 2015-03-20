@@ -114,16 +114,24 @@ class PostInspector {
      *
      * @return array PostInspector objects
      */
-    public function siblings()
+    public function siblings($args = array())
     {
         if ( ! is_post_type_hierarchical($this->post->post_type)) return false;
 
-        $query = new WP_Query(array(
+        $args = wp_parse_args($args, array(
+            'include_self' => true
+        ));
+
+        $queryArgs = array(
             'post_type' => $this->post->post_type,
             'posts_per_page' => -1,
-            'post_parent__in' => array($this->post->post_parent),
-            'post__not_in' => array($this->post->ID)
-        ));
+            'post_parent__in' => array($this->post->post_parent)
+        );
+
+        // Include calling object?
+        if ($args['includeSelf']) $queryArgs['post__not_in'] = array($this->post->ID);
+
+        $query = new WP_Query($queryArgs);
 
         $items = $this->makePostInspectorObjects($query->get_posts());
 

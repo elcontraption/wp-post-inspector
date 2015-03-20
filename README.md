@@ -72,10 +72,20 @@ $currentPost->descendants();
 ```
 
 ### siblings
-Returns collection of siblings as PostInspector objects. The current post object is not included among the siblings.
+Returns collection of siblings as PostInspector objects.
+
+#### Parameters
+The `siblings` method takes an array of optional parameters.
+
+Parameter    | Default | Result
+------------ | ------- | ------
+`include_self` | `true` | Includes calling object in results
 
 ```php
-$currentPost->siblings();
+// Get siblings excluding the calling object
+$currentPost->siblings(array(
+    include_self => false
+));
 ```
 
 ## PostInspectorCollection methods

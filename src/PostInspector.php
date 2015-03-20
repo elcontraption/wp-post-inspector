@@ -121,7 +121,8 @@ class PostInspector {
         $query = new WP_Query(array(
             'post_type' => $this->post->post_type,
             'posts_per_page' => -1,
-            'post_parent__in' => array($this->post->post_parent)
+            'post_parent__in' => array($this->post->post_parent),
+            'post__not_in' => array($this->post->id())
         ));
 
         $items = $this->makePostInspectorObjects($query->get_posts());

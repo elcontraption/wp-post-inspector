@@ -3,7 +3,7 @@
 class PostInspectorCollection {
 
     /**
-     * The current Post Inspector object
+     * The current PostInspector object
      *
      * @var PostInspector
      */
@@ -16,6 +16,11 @@ class PostInspectorCollection {
      */
     protected $items;
 
+    /**
+     * Make a new PostInspectorCollection
+     * @param PostInspector $current    The current PostInspector object
+     * @param array $items              PostInspector objects
+     */
     public function __construct($current, $items)
     {
         $this->current = $current;

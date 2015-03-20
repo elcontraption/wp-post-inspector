@@ -7,14 +7,14 @@ class PostInspectorCollection {
      *
      * @var PostInspector
      */
-    protected $current;
+    public $current;
 
     /**
      * Array of Post Inspector objects
      *
      * @var array
      */
-    protected $items;
+    public $items;
 
     /**
      * Make a new PostInspectorCollection

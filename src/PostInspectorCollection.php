@@ -1,10 +1,10 @@
-<?php namespace PostInspector;
+<?php namespace ElContraption\PostInspector;
 
 class PostInspectorCollection {
 
     /**
      * Array of Post Inspector objects
-     * 
+     *
      * @var array
      */
     protected $items;

@@ -1,4 +1,4 @@
-<?php namespace PostInspector;
+<?php namespace ElContraption\PostInspector;
 
 use WP_Post;
 use WP_Query;

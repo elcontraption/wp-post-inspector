@@ -129,7 +129,7 @@ class PostInspector {
         );
 
         // Include calling object?
-        if ($args['includeSelf']) $queryArgs['post__not_in'] = array($this->post->ID);
+        if ( ! $args['includeSelf']) $queryArgs['post__not_in'] = array($this->post->ID);
 
         $query = new WP_Query($queryArgs);
 

@@ -84,14 +84,17 @@ $currentPost->siblings();
 Return an array of items within the collection as PostInspector objects.
 
 ```php
-$siblings = $currentPost->siblings();
+$siblingsCollection = $currentPost->siblings();
+$siblings = $siblingsCollection->items();
 
 // List siblings
 echo '<ul>';
-foreach ($siblings->items as $sibling)
+
+foreach ($siblings as $sibling)
 {
     echo '<li>' . $sibling->title() . '</li>';
 }
+
 echo '</ul>';
 ```
 

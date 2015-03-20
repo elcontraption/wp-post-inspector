@@ -31,21 +31,7 @@ $post1 = new PostInspector(1);
 $helloWorldPost = new PostInspector('hello-world');
 ```
 
-## Methods
-
-### ancestors
-Returns array of ancestors as PostInspector objects.
-
-```php
-$currentPost->ancestors();
-```
-
-### descendants
-Returns array of descendants as PostInspector objects.
-
-```php
-$currentPost->descendants();
-```
+## Inspecting a post object
 
 ### parent
 Access parent PostInspector object.
@@ -61,18 +47,52 @@ Shortcut for `get_permalink($currentPost->id())`.
 $currentPost->permalink();
 ```
 
-### siblings
-Returns array of siblings as PostInspector objects.
-
-```php
-$currentPost->siblings();
-```
-
 ### top
 Access the top ancestor as a PostInspector object.
 
 ```php
 $currentPost->top();
+```
+
+## Post object collections
+The following methods return a PostInspectorCollection instance.
+
+### ancestors
+Returns collection of ancestors as PostInspector objects.
+
+```php
+$currentPost->ancestors();
+```
+
+### descendants
+Returns collection of descendants as PostInspector objects.
+
+```php
+$currentPost->descendants();
+```
+
+### siblings
+Returns collection of siblings as PostInspector objects. The current post object is not included among the siblings.
+
+```php
+$currentPost->siblings();
+```
+
+## PostInspectorCollection methods
+
+### items
+Return an array of items within the collection as PostInspector objects.
+
+```php
+$siblings = $currentPost->siblings();
+
+// List siblings
+echo '<ul>';
+foreach ($siblings->items as $sibling)
+{
+    echo '<li>' . $sibling->title() . '</li>';
+}
+echo '</ul>';
 ```
 
 

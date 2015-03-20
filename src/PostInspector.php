@@ -125,6 +125,10 @@ class PostInspector {
             'post__not_in' => array($this->post->id)
         ));
 
+        print "<pre>";
+        print_r($query);
+        print "</pre>";
+
         $items = $this->makePostInspectorObjects($query->get_posts());
 
         return new PostInspectorCollection($this->post, $items);

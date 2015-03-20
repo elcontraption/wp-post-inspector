@@ -1,4 +1,4 @@
-<?php namespace WpPostInspector;
+<?php namespace PostInspector;
 
 use WP_Post;
 use WP_Query;
@@ -24,7 +24,7 @@ class PostInspector {
 
     /**
      * Get post permalink
-     * 
+     *
      * @return string Post permalink
      */
     public function permalink()

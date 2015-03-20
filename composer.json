@@ -14,8 +14,8 @@
         "php": ">=5.4.0"
     },
     "autoload": {
-        "psr-4": {
-            "WpPostInspector\\": "lib/WpPostInspector"
+        "psr-0": {
+            "PostInspector": "src"
         }
     }
 }

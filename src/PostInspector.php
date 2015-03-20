@@ -122,12 +122,8 @@ class PostInspector {
             'post_type' => $this->post->post_type,
             'posts_per_page' => -1,
             'post_parent__in' => array($this->post->post_parent),
-            'post__not_in' => array($this->post->id)
+            'post__not_in' => array($this->post->ID)
         ));
-
-        print "<pre>";
-        print_r($query);
-        print "</pre>";
 
         $items = $this->makePostInspectorObjects($query->get_posts());
 

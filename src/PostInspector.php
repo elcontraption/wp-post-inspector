@@ -124,7 +124,9 @@ class PostInspector {
             'post_parent__in' => array($this->post->post_parent)
         ));
 
-        return $this->makePostInspectorObjects($query->get_posts());
+        $items = $this->makePostInspectorObjects($query->get_posts());
+
+        return new PostInspectorCollection($this->post, $items);
     }
 
     /**

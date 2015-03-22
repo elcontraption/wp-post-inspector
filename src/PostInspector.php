@@ -20,6 +20,10 @@ class PostInspector {
     public function __construct($post = null)
     {
         $this->post = $this->getPostObject($post);
+
+        print "<pre>";
+        print_r($this->post);
+        print "</pre>";
     }
 
     /**

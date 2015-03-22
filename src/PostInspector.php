@@ -41,7 +41,7 @@ class PostInspector {
      */
     public function parent()
     {
-        if ( ! $this->is_post_type_hierarchical($this->post)) return false;
+        if ( ! $this->isPostTypeHierarchical($this->post)) return false;
 
         $parentId = $this->post->post_parent;
 
@@ -57,7 +57,7 @@ class PostInspector {
      */
     public function top()
     {
-        if ( ! $this->is_post_type_hierarchical($this->post)) return false;
+        if ( ! $this->isPostTypeHierarchical($this->post)) return false;
 
         $ancestorIds = get_ancestors($this->post->ID, $this->post->post_type);
 
@@ -73,7 +73,7 @@ class PostInspector {
      */
     public function ancestors()
     {
-        if ( ! $this->is_post_type_hierarchical($this->post)) return false;
+        if ( ! $this->isPostTypeHierarchical($this->post)) return false;
 
         $ancestorIds = get_ancestors($this->post->ID, $this->post->post_type);
 
@@ -97,7 +97,7 @@ class PostInspector {
      */
     public function descendants()
     {
-        if ( ! $this->is_post_type_hierarchical($this->post)) return false;
+        if ( ! $this->isPostTypeHierarchical($this->post)) return false;
 
         $query = new WP_Query(array(
             'post_type' => $this->post->post_type,
@@ -116,7 +116,7 @@ class PostInspector {
      */
     public function siblings($args = array())
     {
-        if ( ! $this->is_post_type_hierarchical($this->post)) return false;
+        if ( ! $this->isPostTypeHierarchical($this->post)) return false;
 
         $args = wp_parse_args($args, array(
             'include_self' => true

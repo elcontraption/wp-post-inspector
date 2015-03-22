@@ -20,10 +20,6 @@ class PostInspector {
     public function __construct($post = null)
     {
         $this->post = $this->getPostObject($post);
-
-        print "<pre>";
-        print_r($this->post);
-        print "</pre>";
     }
 
     /**
@@ -45,7 +41,7 @@ class PostInspector {
      */
     public function parent()
     {
-        if ( ! is_post_type_hierarchical($this->post->post_type)) return false;
+        if ( ! $this->is_post_type_hierarchical($this->post)) return false;
 
         $parentId = $this->post->post_parent;
 
@@ -61,7 +57,7 @@ class PostInspector {
      */
     public function top()
     {
-        if ( ! is_post_type_hierarchical($this->post->post_type)) return false;
+        if ( ! $this->is_post_type_hierarchical($this->post)) return false;
 
         $ancestorIds = get_ancestors($this->post->ID, $this->post->post_type);
 
@@ -77,7 +73,7 @@ class PostInspector {
      */
     public function ancestors()
     {
-        if ( ! is_post_type_hierarchical($this->post->post_type)) return false;
+        if ( ! $this->is_post_type_hierarchical($this->post)) return false;
 
         $ancestorIds = get_ancestors($this->post->ID, $this->post->post_type);
 
@@ -101,7 +97,7 @@ class PostInspector {
      */
     public function descendants()
     {
-        if ( ! is_post_type_hierarchical($this->post->post_type)) return false;
+        if ( ! $this->is_post_type_hierarchical($this->post)) return false;
 
         $query = new WP_Query(array(
             'post_type' => $this->post->post_type,
@@ -120,7 +116,7 @@ class PostInspector {
      */
     public function siblings($args = array())
     {
-        if ( ! is_post_type_hierarchical($this->post->post_type)) return false;
+        if ( ! $this->is_post_type_hierarchical($this->post)) return false;
 
         $args = wp_parse_args($args, array(
             'include_self' => true
@@ -151,6 +147,16 @@ class PostInspector {
     private function makePostInspectorObjects($posts)
     {
         return array_map(function($post) { return new PostInspector($post); }, $posts);
+    }
+
+    protected function isPostTypeHierarchical($post)
+    {
+        if ( ! isset($post->post_type))
+        {
+            return false;
+        }
+
+        return is_post_type_hierarchical($post->post_type);
     }
 
     /**

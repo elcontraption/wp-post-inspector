@@ -181,7 +181,14 @@ class PostInspector {
             return get_page_by_path($post, OBJECT, array('page'));
         }
 
-        return get_queried_object();
+        $queriedObject = get_queried_object();
+
+        if ($queriedObject instanceof WP_Post)
+        {
+            return $queriedObject;
+        }
+
+        return false;
     }
 
     /**

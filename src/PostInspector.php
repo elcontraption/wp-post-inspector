@@ -13,6 +13,13 @@ class PostInspector {
     private $post;
 
     /**
+     * Is this a post object?
+     *
+     * @var bool
+     */
+    protected $isPostObject = true;
+
+    /**
      * Constructor
      *
      * @param mixed $post Post object, id, slug, or null
@@ -20,6 +27,11 @@ class PostInspector {
     public function __construct($post = null)
     {
         $this->post = $this->getPostObject($post);
+
+        if ( ! $this->post)
+        {
+            $this->isPostObject = false;
+        }
     }
 
     /**
@@ -237,6 +249,11 @@ class PostInspector {
      */
     public function __call($method, $args)
     {
+        if ( ! $this->isPostObject)
+        {
+            return false;
+        }
+
         $aliases = $this->aliases();
 
         if (array_key_exists($method, $aliases))

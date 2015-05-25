@@ -1,4 +1,4 @@
-<?php namespace ElContraption\PostInspector;
+<?php namespace ElContraption\WpPostInspector;
 
 class PostInspectorCollection {
 

@@ -19,7 +19,7 @@ composer require elcontraption/wp-post-inspector
 ## Retrieving a post object
 
 ```php
-use \ElContraption\PostInspector\PostInspector;
+use \ElContraption\WpPostInspector\PostInspector;
 
 // Get the current post object:
 $currentPost = new PostInspector();

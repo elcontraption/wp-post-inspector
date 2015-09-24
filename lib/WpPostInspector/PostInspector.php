@@ -41,7 +41,7 @@ class PostInspector {
      */
     public function parent()
     {
-        if ( ! is_post_type_hierarchical($this->post->post_type)) return false;
+        if ( ! $this->isHierarchical()) return false;
 
         $parentId = $this->post->post_parent;
 
@@ -57,7 +57,7 @@ class PostInspector {
      */
     public function top()
     {
-        if ( ! is_post_type_hierarchical($this->post->post_type)) return false;
+        if ( ! $this->isHierarchical()) return false;
 
         $ancestorIds = get_ancestors($this->post->ID, $this->post->post_type);
 
@@ -73,7 +73,7 @@ class PostInspector {
      */
     public function ancestors()
     {
-        if ( ! is_post_type_hierarchical($this->post->post_type)) return false;
+        if ( ! $this->isHierarchical()) return false;
 
         $ancestorIds = get_ancestors($this->post->ID, $this->post->post_type);
 
@@ -97,7 +97,7 @@ class PostInspector {
      */
     public function descendants()
     {
-        if ( ! is_post_type_hierarchical($this->post->post_type)) return false;
+        if ( ! $this->isHierarchical()) return false;
 
         $query = new WP_Query(array(
             'post_type' => $this->post->post_type,
@@ -116,7 +116,7 @@ class PostInspector {
      */
     public function siblings()
     {
-        if ( ! is_post_type_hierarchical($this->post->post_type)) return false;
+        if ( ! $this->isHierarchical()) return false;
 
         $query = new WP_Query(array(
             'post_type' => $this->post->post_type,
@@ -161,6 +161,20 @@ class PostInspector {
         }
 
         return get_queried_object();
+    }
+
+    /**
+     * Test if post type is hierarchical.
+     * 
+     * @return boolean
+     */
+    protected function isHierarchical()
+    {
+        if ( ! is_object($this->post)) return false;
+
+        if ( ! is_post_type_hierarchical($this->post->post_type)) return false;
+
+        return true;
     }
 
     /**

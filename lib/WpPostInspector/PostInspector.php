@@ -24,7 +24,7 @@ class PostInspector {
 
     /**
      * Get post permalink
-     * 
+     *
      * @return string Post permalink
      */
     public function permalink()
@@ -165,7 +165,7 @@ class PostInspector {
 
     /**
      * Test if post type is hierarchical.
-     * 
+     *
      * @return boolean
      */
     protected function isHierarchical()
@@ -227,7 +227,7 @@ class PostInspector {
 
         if (array_key_exists($method, $aliases))
         {
-            return $this->post->$aliases[$method];
+            return $this->$aliases[$method];
         }
 
         if (in_array($method, $aliases))

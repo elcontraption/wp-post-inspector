@@ -227,7 +227,8 @@ class PostInspector {
 
         if (array_key_exists($method, $aliases))
         {
-            return $this->$aliases[$method];
+            $translated = $aliases[$method];
+            return $this->post->$translated;
         }
 
         if (in_array($method, $aliases))
